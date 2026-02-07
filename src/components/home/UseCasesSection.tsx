@@ -30,7 +30,7 @@ const useCases = [
 
 export function UseCasesSection() {
   return (
-    <section className="py-24 relative bg-card/50">
+    <section className="py-24 relative bg-muted/50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -41,7 +41,7 @@ export function UseCasesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Perfect for <span className="gradient-text">Every Event Type</span>
+            Perfect for <span className="text-primary">Every Event Type</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             From intimate gatherings to massive expos, Frame Forge adapts to your event's unique needs.
@@ -57,10 +57,10 @@ export function UseCasesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-card rounded-2xl p-8 hover:border-primary/50 transition-all duration-300"
+              className="bg-card border border-border rounded-2xl p-8 hover:border-primary/50 hover:shadow-md transition-all duration-300"
             >
               <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-xl gradient-bg flex items-center justify-center flex-shrink-0">
+                <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
                   <useCase.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <div>

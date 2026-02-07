@@ -95,12 +95,7 @@ const Services = () => {
       <Navbar />
       <main className="pt-24">
         {/* Hero */}
-        <section className="py-16 relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-          </div>
-          
+        <section className="py-16 relative overflow-hidden bg-muted/30">
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -108,7 +103,7 @@ const Services = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Our <span className="gradient-text">Services</span>
+                Our <span className="text-primary">Services</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 A complete suite of AI-powered tools and creative services designed to 
@@ -123,7 +118,7 @@ const Services = () => {
           <section
             key={service.id}
             id={service.id}
-            className={`py-20 ${index % 2 === 1 ? "bg-card/50" : ""}`}
+            className={`py-20 ${index % 2 === 1 ? "bg-muted/50" : ""}`}
           >
             <div className="container mx-auto px-4">
               <motion.div
@@ -136,7 +131,7 @@ const Services = () => {
               >
                 {/* Content */}
                 <div className="flex-1">
-                  <div className="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mb-6 glow-primary">
+                  <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mb-6 shadow-md">
                     <service.icon className="w-8 h-8 text-primary-foreground" />
                   </div>
                   <h2 className="text-3xl md:text-4xl font-bold mb-2">{service.title}</h2>
@@ -149,7 +144,7 @@ const Services = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                     {service.benefits.map((benefit, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <div className="w-5 h-5 rounded-full gradient-bg flex items-center justify-center flex-shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
                           <Check className="w-3 h-3 text-primary-foreground" />
                         </div>
                         <span className="text-foreground">{benefit}</span>
@@ -157,7 +152,7 @@ const Services = () => {
                     ))}
                   </div>
 
-                  <Button asChild className="gradient-bg hover:opacity-90">
+                  <Button asChild>
                     <Link to="/contact">
                       Get Started
                       <ArrowRight className="ml-2 w-4 h-4" />
@@ -167,7 +162,7 @@ const Services = () => {
 
                 {/* Visual Card */}
                 <div className="flex-1 w-full">
-                  <div className="glass-card rounded-2xl p-8">
+                  <div className="bg-card border border-border rounded-2xl p-8 shadow-sm">
                     <h4 className="font-semibold text-foreground mb-4">Perfect for:</h4>
                     <div className="flex flex-wrap gap-3">
                       {service.useCases.map((useCase, i) => (

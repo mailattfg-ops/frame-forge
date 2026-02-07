@@ -66,12 +66,7 @@ const HowItWorks = () => {
       <Navbar />
       <main className="pt-24">
         {/* Hero */}
-        <section className="py-16 relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-          </div>
-          
+        <section className="py-16 relative overflow-hidden bg-muted/30">
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -79,7 +74,7 @@ const HowItWorks = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                How It <span className="gradient-text">Works</span>
+                How It <span className="text-primary">Works</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 From event setup to viral sharing, see how Frame Forge transforms 
@@ -104,13 +99,13 @@ const HowItWorks = () => {
                 >
                   {/* Line Connector */}
                   {index < steps.length - 1 && (
-                    <div className="absolute left-8 top-20 bottom-0 w-px bg-gradient-to-b from-primary to-secondary hidden md:block" />
+                    <div className="absolute left-8 top-20 bottom-0 w-px bg-border hidden md:block" />
                   )}
 
                   {/* Step Number & Icon */}
                   <div className="flex-shrink-0">
                     <div className="relative">
-                      <div className="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center glow-primary">
+                      <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center shadow-md">
                         <step.icon className="w-7 h-7 text-primary-foreground" />
                       </div>
                       <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-secondary text-secondary-foreground text-sm font-bold flex items-center justify-center">
@@ -131,7 +126,7 @@ const HowItWorks = () => {
         </section>
 
         {/* Integration Methods */}
-        <section className="py-20 bg-card/50">
+        <section className="py-20 bg-muted/50">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -140,7 +135,7 @@ const HowItWorks = () => {
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Integration <span className="gradient-text">Options</span>
+                Integration <span className="text-primary">Options</span>
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Choose the integration method that best fits your event's needs and technical requirements.
@@ -155,9 +150,9 @@ const HowItWorks = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="glass-card rounded-2xl p-8 hover:border-primary/50 transition-all duration-300"
+                  className="bg-card border border-border rounded-2xl p-8 hover:border-primary/50 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="w-14 h-14 rounded-xl gradient-bg flex items-center justify-center mb-6">
+                  <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center mb-6">
                     <method.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-foreground">{method.title}</h3>
@@ -175,7 +170,7 @@ const HowItWorks = () => {
             </div>
 
             <div className="text-center mt-12">
-              <Button asChild size="lg" className="gradient-bg hover:opacity-90">
+              <Button asChild size="lg">
                 <Link to="/integration">
                   View Integration Details
                   <ArrowRight className="ml-2 w-5 h-5" />

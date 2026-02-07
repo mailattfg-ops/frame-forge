@@ -30,10 +30,7 @@ const benefits = [
 
 export function BenefitsSection() {
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
-      
+    <section className="py-24 relative overflow-hidden bg-muted/30">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -44,7 +41,7 @@ export function BenefitsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Maximize Your <span className="gradient-text">Event Visibility</span>
+            Maximize Your <span className="text-primary">Event Visibility</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Real results from real events. See how Frame Forge transforms engagement metrics.
@@ -62,10 +59,10 @@ export function BenefitsSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mx-auto mb-6 glow-primary">
+              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mx-auto mb-6 shadow-md">
                 <benefit.icon className="w-8 h-8 text-primary-foreground" />
               </div>
-              <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                 {benefit.value}
               </div>
               <div className="text-lg font-semibold text-foreground mb-2">
