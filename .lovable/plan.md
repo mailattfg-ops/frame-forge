@@ -1,72 +1,77 @@
 
 
-# Frame Forge Branding Update
+# Logo Update - Black Logo Without Background
 
 ## Overview
-Update the entire website with the new Frameforge.one logo and Geist Mono font. The logo is white text on transparent background, so it will be placed appropriately for visibility.
+Update the logo display in both Navbar and Footer to show a black logo directly without any background container. This requires a new black version of the logo image and simplified logo markup.
 
 ---
 
-## Changes Summary
+## Changes Required
 
-### 1. Add the Logo Image
-- Copy the uploaded logo to `src/assets/frameforge-logo.png`
-- This logo will be imported as an ES6 module in components
+### 1. Add Black Logo Image
+**File**: `src/assets/frameforge-logo-black.png`
+- You'll need to provide a black version of the Frameforge.one logo
+- This logo will be used on the light background without any container
 
-### 2. Update Font to Geist Mono
-- Add Geist Mono from Google Fonts in `index.html`
-- Update `tailwind.config.ts` to use "Geist Mono" as the primary font family
-- Update the font-feature-settings in `src/index.css`
-
-### 3. Update Navbar Logo
+### 2. Update Navbar
 **File**: `src/components/Navbar.tsx`
-- Replace the current placeholder logo (orange square with "F") with the actual Frameforge.one logo image
-- Since the logo is white, add a dark/colored background container behind it for visibility on the light navbar
-- Update brand text from "Frame Forge" to match the logo style
 
-### 4. Update Footer Logo
+Current (line 28-32):
+```jsx
+<Link to="/" className="flex items-center gap-3">
+  <div className="h-10 px-3 rounded-lg bg-foreground flex items-center justify-center">
+    <img src={frameforgelogo} alt="Frameforge.one" className="h-5 w-auto" />
+  </div>
+</Link>
+```
+
+New:
+```jsx
+<Link to="/" className="flex items-center">
+  <img src={frameforgelogoBlack} alt="Frameforge.one" className="h-8 w-auto" />
+</Link>
+```
+
+Changes:
+- Remove the dark background container (`bg-foreground`)
+- Import and use the black logo instead of white logo
+- Increase logo size slightly for better visibility (h-5 → h-8)
+- Simplify the markup
+
+### 3. Update Footer
 **File**: `src/components/Footer.tsx`
-- Replace the placeholder logo with the actual Frameforge.one logo image
-- Add appropriate background for visibility
-- Update copyright text from "Frame Forge" to "Frameforge.one"
-- Update email from `hello@frameforge.ai` to use the `frameforge.one` domain
 
-### 5. Update HTML Meta Tags
-**File**: `index.html`
-- Update `<title>` to "Frameforge.one"
-- Update `og:title` to "Frameforge.one"
-- Update meta description to reflect the Frame Forge product
-- Update og:url to `https://frameforge.one`
+Current (line 31-35):
+```jsx
+<Link to="/" className="flex items-center gap-3">
+  <div className="h-10 px-3 rounded-lg bg-foreground flex items-center justify-center">
+    <img src={frameforgelogo} alt="Frameforge.one" className="h-5 w-auto" />
+  </div>
+</Link>
+```
 
-### 6. Update All Brand References
-Update text references across the site to use consistent branding:
-- `src/pages/Integration.tsx` - Update API URLs from `frameforge.ai` to `frameforge.one`
-- Any other files with brand/URL references
+New:
+```jsx
+<Link to="/" className="flex items-center">
+  <img src={frameforgelogoBlack} alt="Frameforge.one" className="h-8 w-auto" />
+</Link>
+```
+
+Same changes as Navbar - remove background container, use black logo.
 
 ---
 
-## Technical Details
-
-### Files to Modify
+## Files Summary
 
 | File | Change |
 |------|--------|
-| `index.html` | Add Geist Mono font link, update meta tags |
-| `tailwind.config.ts` | Change fontFamily from Inter to Geist Mono |
-| `src/components/Navbar.tsx` | Import and use logo image |
-| `src/components/Footer.tsx` | Import and use logo image, update email |
-| `src/pages/Integration.tsx` | Update API URLs to frameforge.one domain |
-| `src/index.css` | Minor cleanup of font comment |
+| `src/assets/frameforge-logo-black.png` | Add new black logo (user to provide) |
+| `src/components/Navbar.tsx` | Remove bg container, use black logo |
+| `src/components/Footer.tsx` | Remove bg container, use black logo |
 
-### Files to Create
-| File | Purpose |
-|------|---------|
-| `src/assets/frameforge-logo.png` | Copy of uploaded logo |
+---
 
-### Logo Usage Approach
-Since the logo is white text on transparent background:
-- **Navbar (light background)**: Wrap logo in a dark rounded container or primary color background
-- **Footer (muted background)**: Same approach with dark container for visibility
-
-This ensures the logo is always clearly visible regardless of the page background color.
+## Note
+Please upload a black version of the Frameforge.one logo. If you have one ready, I can proceed with the implementation immediately after this plan is approved.
 
