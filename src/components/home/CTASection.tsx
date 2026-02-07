@@ -1,0 +1,57 @@
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowRight, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export function CTASection() {
+  return (
+    <section className="py-24 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 gradient-bg opacity-90" />
+      
+      {/* Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-8">
+            <Zap className="w-4 h-4 text-white" />
+            <span className="text-sm text-white/90">Ready to Transform Your Events?</span>
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 text-balance">
+            Start Creating Unforgettable Event Experiences Today
+          </h2>
+
+          <p className="text-lg text-white/80 mb-10 leading-relaxed">
+            Join hundreds of event organizers who trust Frame Forge to elevate their events. 
+            Get started in minutes with our easy setup process.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
+              <Link to="/contact">
+                Get Started Free
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 text-lg px-8 py-6">
+              <Link to="/how-it-works">
+                Learn More
+              </Link>
+            </Button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
