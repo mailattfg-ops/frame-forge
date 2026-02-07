@@ -4,32 +4,33 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import sampleFrame1 from "@/assets/sample-frame-1.jpg";
+import showcaseSpeakerFrame from "@/assets/showcase-speaker-frame.png";
+import showcaseAttendeeBadge from "@/assets/showcase-attendee-badge.png";
+import showcaseWorkshopCertificate from "@/assets/showcase-workshop-certificate.png";
+import showcaseVirtualEvent from "@/assets/showcase-virtual-event.png";
 
-// Using the same image with different descriptions for now
-// In production, you'd have multiple unique frame examples
 const frames = [
   {
     id: 1,
-    image: sampleFrame1,
+    image: showcaseSpeakerFrame,
     title: "Conference Speaker Frame",
     description: "Professional event frame with speaker details and branding",
   },
   {
     id: 2,
-    image: sampleFrame1,
+    image: showcaseAttendeeBadge,
     title: "Summit Attendee Badge",
     description: "Elegant badge design for summit participants",
   },
   {
     id: 3,
-    image: sampleFrame1,
+    image: showcaseWorkshopCertificate,
     title: "Workshop Certificate",
     description: "Achievement frame for workshop completions",
   },
   {
     id: 4,
-    image: sampleFrame1,
+    image: showcaseVirtualEvent,
     title: "Virtual Event Frame",
     description: "Digital frame for online event engagement",
   },
