@@ -8,6 +8,7 @@ import Services from "./pages/Services";
 import HowItWorks from "./pages/HowItWorks";
 import Integration from "./pages/Integration";
 import Contact from "./pages/Contact";
+import AdminImages from "./pages/AdminImages";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/integration" element={<Integration />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin/images" element={<AdminImages />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
