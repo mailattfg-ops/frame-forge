@@ -26,7 +26,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img src={frameforgelogo} alt="Frameforge.one" className="h-8 w-auto invert" />
+            <img src={frameforgelogo} alt="Frameforge.one" className="h-5 w-auto invert" />
           </Link>
 
           {/* Desktop Navigation */}
