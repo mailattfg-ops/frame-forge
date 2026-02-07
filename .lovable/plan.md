@@ -1,134 +1,72 @@
 
 
-# Frame Forge - Clean & Professional Redesign
+# Frame Forge Branding Update
 
 ## Overview
-Transform the current dark, AI-themed design into a clean, simple, and professional look that feels human-crafted. The new design will use a light theme with simple, warm colors that are approachable and trustworthy.
+Update the entire website with the new Frameforge.one logo and Geist Mono font. The logo is white text on transparent background, so it will be placed appropriately for visibility.
 
 ---
 
-## New Design System
+## Changes Summary
 
-### Color Palette
-**Light, Clean Theme:**
-- **Background**: Clean white (#FFFFFF)
-- **Foreground**: Dark charcoal (#1a1a1a) for text
-- **Primary**: Warm coral/orange (#f97316) - friendly and energetic
-- **Secondary**: Soft teal (#14b8a6) - for accents
-- **Muted**: Light gray (#f5f5f5) - for subtle backgrounds
-- **Border**: Light gray (#e5e5e5)
+### 1. Add the Logo Image
+- Copy the uploaded logo to `src/assets/frameforge-logo.png`
+- This logo will be imported as an ES6 module in components
 
-### Typography
-- Keep Inter font family (clean and professional)
-- Simpler text hierarchy without gradient effects
+### 2. Update Font to Geist Mono
+- Add Geist Mono from Google Fonts in `index.html`
+- Update `tailwind.config.ts` to use "Geist Mono" as the primary font family
+- Update the font-feature-settings in `src/index.css`
 
-### Visual Style Changes
-- Remove all gradient backgrounds and text
-- Remove glow effects and blur effects
-- Remove glassmorphism (glass-card)
-- Use simple solid backgrounds and borders
-- Use subtle shadows instead of glows
-- Clean, flat design with soft shadows
+### 3. Update Navbar Logo
+**File**: `src/components/Navbar.tsx`
+- Replace the current placeholder logo (orange square with "F") with the actual Frameforge.one logo image
+- Since the logo is white, add a dark/colored background container behind it for visibility on the light navbar
+- Update brand text from "Frame Forge" to match the logo style
 
----
+### 4. Update Footer Logo
+**File**: `src/components/Footer.tsx`
+- Replace the placeholder logo with the actual Frameforge.one logo image
+- Add appropriate background for visibility
+- Update copyright text from "Frame Forge" to "Frameforge.one"
+- Update email from `hello@frameforge.ai` to use the `frameforge.one` domain
 
-## Files to Modify
+### 5. Update HTML Meta Tags
+**File**: `index.html`
+- Update `<title>` to "Frameforge.one"
+- Update `og:title` to "Frameforge.one"
+- Update meta description to reflect the Frame Forge product
+- Update og:url to `https://frameforge.one`
 
-### 1. Design System (src/index.css)
-- Replace dark color values with light theme
-- Remove gradient CSS variables
-- Remove glow effect variables
-- Simplify utility classes (no gradients, no glows)
-- Keep basic utilities but make them simpler
-
-### 2. Tailwind Config (tailwind.config.ts)
-- Remove glow-pulse animation
-- Simplify keyframes
-- Keep fade-in animations (they still feel natural)
-
-### 3. Navbar (src/components/Navbar.tsx)
-- Remove gradient-bg from logo
-- Remove gradient-text class
-- Use solid background instead of glass-card
-- Simple hover effects
-
-### 4. Footer (src/components/Footer.tsx)
-- Remove gradient styling
-- Simple solid background
-- Clean, minimal design
-
-### 5. Hero Section (src/components/home/HeroSection.tsx)
-- Remove background blur effects
-- Remove grid pattern
-- Remove gradient-text
-- Remove glow effects from buttons
-- Simple, clean layout
-- Remove animated scroll indicator or simplify it
-
-### 6. Features Section (src/components/home/FeaturesSection.tsx)
-- Remove glass-card
-- Simple card with light background and subtle shadow
-- Remove gradient-bg from icons
-- Use solid colored backgrounds for icons
-
-### 7. Benefits Section (src/components/home/BenefitsSection.tsx)
-- Remove gradient backgrounds
-- Remove glow effects
-- Simple layout with clean cards
-
-### 8. CTA Section (src/components/home/CTASection.tsx)
-- Replace gradient-bg with solid primary color
-- Remove blur decorative elements
-- Clean, simple call-to-action
-
-### 9. How It Works Section (src/components/home/HowItWorksSection.tsx)
-- Remove gradient line connector
-- Use simple solid line
-- Clean step indicators
-
-### 10. Products Section (src/components/home/ProductsSection.tsx)
-- Remove glass-card styling
-- Simple card design with borders
-- Remove gradient effects
-
-### 11. Use Cases Section (src/components/home/UseCasesSection.tsx)
-- Simplify card styling
-- Remove any gradient or glow effects
-
-### 12. All Page Files
-- **Services.tsx**: Remove gradients, glows, glass effects
-- **HowItWorks.tsx**: Clean step design, remove gradient connectors
-- **Integration.tsx**: Simple code blocks, clean cards
-- **Contact.tsx**: Clean form styling, simple success state
-
----
-
-## Summary of Removals
-- All `gradient-text` classes
-- All `gradient-bg` classes
-- All `glow-primary`, `glow-secondary`, `glow-combined` classes
-- All `glass-card` classes
-- Background blur effects
-- Decorative blur orbs (the floating colored circles)
-- Grid pattern backgrounds
-- Animated glow-pulse effects
-
-## Summary of Additions
-- Simple solid color backgrounds
-- Subtle box shadows (shadow-sm, shadow-md)
-- Clean borders
-- Straightforward color usage
-- Professional, trustworthy appearance
+### 6. Update All Brand References
+Update text references across the site to use consistent branding:
+- `src/pages/Integration.tsx` - Update API URLs from `frameforge.ai` to `frameforge.one`
+- Any other files with brand/URL references
 
 ---
 
 ## Technical Details
 
-The implementation will update:
-1. **CSS Variables** - ~50 lines in index.css
-2. **Tailwind Config** - ~20 lines for animation cleanup
-3. **12 Component Files** - Removing gradient/glow classes, adding simple alternatives
-4. **5 Page Files** - Updating to use new clean styling
+### Files to Modify
 
-The result will be a professional, approachable website that looks human-designed rather than AI-generated.
+| File | Change |
+|------|--------|
+| `index.html` | Add Geist Mono font link, update meta tags |
+| `tailwind.config.ts` | Change fontFamily from Inter to Geist Mono |
+| `src/components/Navbar.tsx` | Import and use logo image |
+| `src/components/Footer.tsx` | Import and use logo image, update email |
+| `src/pages/Integration.tsx` | Update API URLs to frameforge.one domain |
+| `src/index.css` | Minor cleanup of font comment |
+
+### Files to Create
+| File | Purpose |
+|------|---------|
+| `src/assets/frameforge-logo.png` | Copy of uploaded logo |
+
+### Logo Usage Approach
+Since the logo is white text on transparent background:
+- **Navbar (light background)**: Wrap logo in a dark rounded container or primary color background
+- **Footer (muted background)**: Same approach with dark container for visibility
+
+This ensures the logo is always clearly visible regardless of the page background color.
 
