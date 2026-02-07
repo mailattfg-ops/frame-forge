@@ -1,31 +1,34 @@
 import { motion } from "framer-motion";
 import { Frame, BadgeCheck, Wand2, Palette } from "lucide-react";
-import sampleFrame from "@/assets/sample-frame-1.jpg";
+import featureAiFrames from "@/assets/feature-ai-frames.png";
+import featureSmartBadges from "@/assets/feature-smart-badges.png";
+import featureAiVisuals from "@/assets/feature-ai-visuals.png";
+import featureCustomDesign from "@/assets/feature-custom-design.png";
 
 const features = [
   {
     icon: Frame,
     title: "AI Event Frames",
     description: "Custom-designed photo frames that perfectly match your event branding and theme.",
-    image: sampleFrame,
+    image: featureAiFrames,
   },
   {
     icon: BadgeCheck,
     title: "Smart Badges",
     description: "Digital badges that attendees can share across social platforms to amplify reach.",
-    image: sampleFrame,
+    image: featureSmartBadges,
   },
   {
     icon: Wand2,
     title: "AI Visuals",
     description: "Generate stunning AI-powered graphics and imagery for your event materials.",
-    image: sampleFrame,
+    image: featureAiVisuals,
   },
   {
     icon: Palette,
     title: "Custom Design",
     description: "Full-service creative design tailored to your brand and event requirements.",
-    image: sampleFrame,
+    image: featureCustomDesign,
   },
 ];
 
