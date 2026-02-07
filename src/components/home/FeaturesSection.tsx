@@ -1,26 +1,31 @@
 import { motion } from "framer-motion";
 import { Frame, BadgeCheck, Wand2, Palette } from "lucide-react";
+import sampleFrame from "@/assets/sample-frame-1.jpg";
 
 const features = [
   {
     icon: Frame,
     title: "AI Event Frames",
     description: "Custom-designed photo frames that perfectly match your event branding and theme.",
+    image: sampleFrame,
   },
   {
     icon: BadgeCheck,
     title: "Smart Badges",
     description: "Digital badges that attendees can share across social platforms to amplify reach.",
+    image: sampleFrame,
   },
   {
     icon: Wand2,
     title: "AI Visuals",
     description: "Generate stunning AI-powered graphics and imagery for your event materials.",
+    image: sampleFrame,
   },
   {
     icon: Palette,
     title: "Custom Design",
     description: "Full-service creative design tailored to your brand and event requirements.",
+    image: sampleFrame,
   },
 ];
 
@@ -75,14 +80,24 @@ export function FeaturesSection() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-md transition-all duration-300"
+              className="group relative rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-md transition-all duration-300 overflow-hidden"
             >
-              <div className="relative z-10">
-                <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center mb-5">
-                  <feature.icon className="w-7 h-7 text-primary-foreground" />
+              {/* Sample Image */}
+              <div className="aspect-[4/3] w-full overflow-hidden">
+                <img 
+                  src={feature.image} 
+                  alt={feature.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              
+              {/* Content */}
+              <div className="p-6">
+                <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center mb-4">
+                  <feature.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-foreground">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
               </div>
             </motion.div>
           ))}
