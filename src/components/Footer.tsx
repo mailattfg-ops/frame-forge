@@ -29,7 +29,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-3">
-              <img src={frameforgelogo} alt="Frameforge.one" className="h-8 w-auto invert" />
+              <img src={frameforgelogo} alt="Frameforge.one" className="h-5 w-auto invert" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Transform your events with AI-powered visual engagement. Custom frames, smart badges, and stunning visuals.
