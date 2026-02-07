@@ -1,141 +1,134 @@
 
 
-# Frame Forge Website - Implementation Plan
+# Frame Forge - Clean & Professional Redesign
 
 ## Overview
-A modern, dark-themed marketing website for Frame Forge - an AI-powered event engagement platform. The site will generate leads through compelling product showcases and conversion-optimized CTAs.
+Transform the current dark, AI-themed design into a clean, simple, and professional look that feels human-crafted. The new design will use a light theme with simple, warm colors that are approachable and trustworthy.
 
 ---
 
-## Phase 1: Foundation & Branding
+## New Design System
 
-### Design System
-- **Theme**: Dark & Futuristic with deep navy/charcoal backgrounds
-- **Accent Colors**: Electric blue and vibrant purple gradients (AI/tech feel)
-- **Typography**: Clean, modern sans-serif fonts
-- **Visual Elements**: Glowing effects, subtle gradients, tech-inspired graphics
-- **Responsive Design**: Optimized for mobile, tablet, and desktop
+### Color Palette
+**Light, Clean Theme:**
+- **Background**: Clean white (#FFFFFF)
+- **Foreground**: Dark charcoal (#1a1a1a) for text
+- **Primary**: Warm coral/orange (#f97316) - friendly and energetic
+- **Secondary**: Soft teal (#14b8a6) - for accents
+- **Muted**: Light gray (#f5f5f5) - for subtle backgrounds
+- **Border**: Light gray (#e5e5e5)
 
----
+### Typography
+- Keep Inter font family (clean and professional)
+- Simpler text hierarchy without gradient effects
 
-## Phase 2: Homepage
-
-### Hero Section
-- Bold headline: "Transform Events with AI-Powered Visual Engagement"
-- Subheadline explaining the core value proposition
-- Primary CTA button leading to contact form
-- Animated visual showcase of frames and badges
-
-### What Frame Forge Does
-- Four product cards with icons (Frames, Badges, AI Visuals, Custom Design)
-- Brief descriptions with hover animations
-- Clean iconography
-
-### How It Works
-- Visual step-by-step process (1-5 steps)
-- Illustrated flow from event registration to social sharing
-- Progress indicators with animations
-
-### Product Offerings
-- Detailed cards for each service
-- Visual mockups of frames and badges
-- "Learn More" links to services page
-
-### Visibility Benefits
-- Statistics/impact section
-- Social sharing visualization
-- "Increase event visibility" messaging
-
-### Use Cases
-- Event type categories (Corporate, Colleges, Conferences, Expos)
-- Industry-specific value propositions
-
-### CTA Section
-- Full-width call-to-action with gradient background
-- Strong conversion-focused messaging
-
-### Footer
-- Navigation links
-- Contact information
-- Social media links
+### Visual Style Changes
+- Remove all gradient backgrounds and text
+- Remove glow effects and blur effects
+- Remove glassmorphism (glass-card)
+- Use simple solid backgrounds and borders
+- Use subtle shadows instead of glows
+- Clean, flat design with soft shadows
 
 ---
 
-## Phase 3: Services Page
+## Files to Modify
 
-### Individual Service Sections
+### 1. Design System (src/index.css)
+- Replace dark color values with light theme
+- Remove gradient CSS variables
+- Remove glow effect variables
+- Simplify utility classes (no gradients, no glows)
+- Keep basic utilities but make them simpler
 
-1. **AI Event Frames**
-   - Description of custom frame generation
-   - Visual examples
-   - Benefits and use cases
+### 2. Tailwind Config (tailwind.config.ts)
+- Remove glow-pulse animation
+- Simplify keyframes
+- Keep fade-in animations (they still feel natural)
 
-2. **Smart Event Badges**
-   - Digital badge explanation
-   - Features and customization options
+### 3. Navbar (src/components/Navbar.tsx)
+- Remove gradient-bg from logo
+- Remove gradient-text class
+- Use solid background instead of glass-card
+- Simple hover effects
 
-3. **AI Image Generation**
-   - AI visual creation capabilities
-   - Event branding applications
+### 4. Footer (src/components/Footer.tsx)
+- Remove gradient styling
+- Simple solid background
+- Clean, minimal design
 
-4. **Custom Creative Design**
-   - Full-service design offerings
-   - Portfolio/examples section
+### 5. Hero Section (src/components/home/HeroSection.tsx)
+- Remove background blur effects
+- Remove grid pattern
+- Remove gradient-text
+- Remove glow effects from buttons
+- Simple, clean layout
+- Remove animated scroll indicator or simplify it
 
-5. **Ticketing System Integration**
-   - Integration capabilities
-   - Compatible platforms
+### 6. Features Section (src/components/home/FeaturesSection.tsx)
+- Remove glass-card
+- Simple card with light background and subtle shadow
+- Remove gradient-bg from icons
+- Use solid colored backgrounds for icons
+
+### 7. Benefits Section (src/components/home/BenefitsSection.tsx)
+- Remove gradient backgrounds
+- Remove glow effects
+- Simple layout with clean cards
+
+### 8. CTA Section (src/components/home/CTASection.tsx)
+- Replace gradient-bg with solid primary color
+- Remove blur decorative elements
+- Clean, simple call-to-action
+
+### 9. How It Works Section (src/components/home/HowItWorksSection.tsx)
+- Remove gradient line connector
+- Use simple solid line
+- Clean step indicators
+
+### 10. Products Section (src/components/home/ProductsSection.tsx)
+- Remove glass-card styling
+- Simple card design with borders
+- Remove gradient effects
+
+### 11. Use Cases Section (src/components/home/UseCasesSection.tsx)
+- Simplify card styling
+- Remove any gradient or glow effects
+
+### 12. All Page Files
+- **Services.tsx**: Remove gradients, glows, glass effects
+- **HowItWorks.tsx**: Clean step design, remove gradient connectors
+- **Integration.tsx**: Simple code blocks, clean cards
+- **Contact.tsx**: Clean form styling, simple success state
 
 ---
 
-## Phase 4: How It Works Page
+## Summary of Removals
+- All `gradient-text` classes
+- All `gradient-bg` classes
+- All `glow-primary`, `glow-secondary`, `glow-combined` classes
+- All `glass-card` classes
+- Background blur effects
+- Decorative blur orbs (the floating colored circles)
+- Grid pattern backgrounds
+- Animated glow-pulse effects
 
-### Detailed Flow Visualization
-- Interactive step-by-step journey
-- Visual diagrams for each integration method
-- Before/after examples
-- Integration options explained (API, Link, Website)
-
----
-
-## Phase 5: Integration Page
-
-### Technical Capabilities
-- API integration overview
-- Link-based system explanation
-- Website embedding options
-- Ticketing platform compatibility list
-- Visual integration diagrams
+## Summary of Additions
+- Simple solid color backgrounds
+- Subtle box shadows (shadow-sm, shadow-md)
+- Clean borders
+- Straightforward color usage
+- Professional, trustworthy appearance
 
 ---
 
-## Phase 6: Contact & Lead Generation
+## Technical Details
 
-### Lead Capture Form
-- All required fields (Name, Organization, Event Name, Event Date, Expected Attendees, Services checkboxes, Email, Phone)
-- Form validation
-- Success confirmation
+The implementation will update:
+1. **CSS Variables** - ~50 lines in index.css
+2. **Tailwind Config** - ~20 lines for animation cleanup
+3. **12 Component Files** - Removing gradient/glow classes, adding simple alternatives
+4. **5 Page Files** - Updating to use new clean styling
 
-### Backend Setup (Lovable Cloud)
-- Database table for lead storage
-- Edge function for email notifications
-- Email sent to your team when leads submit
-
----
-
-## Key Features Throughout
-
-- **SEO Optimized**: Proper meta tags, structured headings, semantic HTML
-- **Fast Loading**: Optimized images, lazy loading
-- **Mobile First**: Responsive design throughout
-- **Conversion Focused**: CTAs on every page
-- **Smooth Animations**: Subtle motion for modern feel
-
----
-
-## Technical Approach
-- React with TypeScript
-- Tailwind CSS for styling
-- Lovable Cloud for contact form backend and email notifications
-- Responsive across all devices
+The result will be a professional, approachable website that looks human-designed rather than AI-generated.
 
