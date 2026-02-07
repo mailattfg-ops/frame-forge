@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
+import frameforgelogo from "@/assets/frameforge-logo.png";
 
 const footerLinks = {
   product: [
@@ -27,11 +28,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">F</span>
+            <Link to="/" className="flex items-center gap-3">
+              <div className="h-10 px-3 rounded-lg bg-foreground flex items-center justify-center">
+                <img src={frameforgelogo} alt="Frameforge.one" className="h-5 w-auto" />
               </div>
-              <span className="text-xl font-bold text-foreground">Frame Forge</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Transform your events with AI-powered visual engagement. Custom frames, smart badges, and stunning visuals.
@@ -78,7 +78,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-muted-foreground text-sm">
                 <Mail size={16} className="text-primary" />
-                <span>hello@frameforge.ai</span>
+                <span>hello@frameforge.one</span>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground text-sm">
                 <Phone size={16} className="text-primary" />
@@ -109,7 +109,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Frame Forge. All rights reserved.
+            © {new Date().getFullYear()} Frameforge.one. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link to="#" className="text-muted-foreground hover:text-primary text-sm transition-colors">

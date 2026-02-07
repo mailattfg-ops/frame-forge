@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import frameforgelogo from "@/assets/frameforge-logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -24,11 +25,10 @@ export function Navbar() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">F</span>
+          <Link to="/" className="flex items-center gap-3">
+            <div className="h-10 px-3 rounded-lg bg-foreground flex items-center justify-center">
+              <img src={frameforgelogo} alt="Frameforge.one" className="h-5 w-auto" />
             </div>
-            <span className="text-xl font-bold text-foreground">Frame Forge</span>
           </Link>
 
           {/* Desktop Navigation */}

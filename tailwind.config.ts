@@ -64,7 +64,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ['"Geist Mono"', "monospace"],
+        mono: ['"Geist Mono"', "monospace"],
       },
       keyframes: {
         "accordion-down": {
