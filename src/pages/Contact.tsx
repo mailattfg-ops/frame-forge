@@ -88,7 +88,7 @@ const Contact = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 className="max-w-lg mx-auto text-center"
               >
-                <div className="w-20 h-20 rounded-full gradient-bg flex items-center justify-center mx-auto mb-8 glow-primary">
+                <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center mx-auto mb-8 shadow-md">
                   <Check className="w-10 h-10 text-primary-foreground" />
                 </div>
                 <h1 className="text-3xl font-bold mb-4">Thank You!</h1>
@@ -113,12 +113,7 @@ const Contact = () => {
       <Navbar />
       <main className="pt-24">
         {/* Hero */}
-        <section className="py-16 relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-          </div>
-          
+        <section className="py-16 relative overflow-hidden bg-muted/30">
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -126,7 +121,7 @@ const Contact = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Let's <span className="gradient-text">Connect</span>
+                Let's <span className="text-primary">Connect</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Ready to transform your event? Fill out the form below and our team 
@@ -144,7 +139,7 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               className="max-w-2xl mx-auto"
             >
-              <div className="glass-card rounded-2xl p-8 md:p-12">
+              <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm">
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     {/* Name & Organization */}
@@ -302,7 +297,7 @@ const Contact = () => {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full gradient-bg hover:opacity-90 text-lg py-6"
+                      className="w-full text-lg py-6"
                       disabled={form.formState.isSubmitting}
                     >
                       {form.formState.isSubmitting ? (

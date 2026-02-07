@@ -31,7 +31,7 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section className="py-24 relative bg-card/50">
+    <section className="py-24 relative bg-muted/50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -42,7 +42,7 @@ export function HowItWorksSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How It <span className="gradient-text">Works</span>
+            How It <span className="text-primary">Works</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             A simple 5-step process that transforms your event engagement in minutes.
@@ -52,7 +52,7 @@ export function HowItWorksSection() {
         {/* Steps */}
         <div className="relative max-w-4xl mx-auto">
           {/* Connection Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-primary hidden lg:block" />
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border hidden lg:block" />
 
           {steps.map((step, index) => (
             <motion.div
@@ -67,7 +67,7 @@ export function HowItWorksSection() {
             >
               {/* Content */}
               <div className={`flex-1 ${index % 2 === 0 ? "lg:text-right" : "lg:text-left"}`}>
-                <div className={`glass-card p-6 rounded-2xl inline-block ${index % 2 === 0 ? "lg:ml-auto" : "lg:mr-auto"}`}>
+                <div className={`bg-card border border-border p-6 rounded-2xl inline-block shadow-sm ${index % 2 === 0 ? "lg:ml-auto" : "lg:mr-auto"}`}>
                   <h3 className="text-xl font-semibold mb-2 text-foreground">{step.title}</h3>
                   <p className="text-muted-foreground">{step.description}</p>
                 </div>
@@ -75,7 +75,7 @@ export function HowItWorksSection() {
 
               {/* Step Number & Icon */}
               <div className="relative z-10 flex-shrink-0">
-                <div className="w-16 h-16 rounded-full gradient-bg flex items-center justify-center glow-primary">
+                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-md">
                   <step.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-secondary text-secondary-foreground text-xs font-bold flex items-center justify-center">

@@ -22,16 +22,16 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-muted border-t border-border">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-xl">F</span>
               </div>
-              <span className="text-xl font-bold gradient-text">Frame Forge</span>
+              <span className="text-xl font-bold text-foreground">Frame Forge</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Transform your events with AI-powered visual engagement. Custom frames, smart badges, and stunning visuals.
@@ -96,7 +96,7 @@ export function Footer() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-muted/80 transition-colors"
+                  className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors"
                   aria-label={link.name}
                 >
                   <link.icon size={18} />

@@ -56,7 +56,7 @@ export function FeaturesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            What <span className="gradient-text">Frame Forge</span> Does
+            What <span className="text-primary">Frame Forge</span> Does
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Everything you need to create memorable, shareable event experiences that drive engagement.
@@ -75,13 +75,10 @@ export function FeaturesSection() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative p-6 rounded-2xl glass-card hover:border-primary/50 transition-all duration-300"
+              className="group relative p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-md transition-all duration-300"
             >
-              {/* Glow Effect on Hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
               <div className="relative z-10">
-                <div className="w-14 h-14 rounded-xl gradient-bg flex items-center justify-center mb-5 group-hover:glow-primary transition-shadow duration-300">
+                <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center mb-5">
                   <feature.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-foreground">{feature.title}</h3>

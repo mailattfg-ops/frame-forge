@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Code, Globe, Plug, Check, FileCode, Webhook, Shield, Zap } from "lucide-react";
+import { ArrowRight, Code, Globe, Plug, FileCode, Webhook, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -90,12 +90,7 @@ const Integration = () => {
       <Navbar />
       <main className="pt-24">
         {/* Hero */}
-        <section className="py-16 relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-          </div>
-          
+        <section className="py-16 relative overflow-hidden bg-muted/30">
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -103,7 +98,7 @@ const Integration = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Seamless <span className="gradient-text">Integration</span>
+                Seamless <span className="text-primary">Integration</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Connect Frame Forge to your existing event infrastructure with our 
@@ -118,7 +113,7 @@ const Integration = () => {
           <section
             key={integration.id}
             id={integration.id}
-            className={`py-20 ${index % 2 === 1 ? "bg-card/50" : ""}`}
+            className={`py-20 ${index % 2 === 1 ? "bg-muted/50" : ""}`}
           >
             <div className="container mx-auto px-4">
               <motion.div
@@ -128,7 +123,7 @@ const Integration = () => {
                 className="max-w-5xl mx-auto"
               >
                 <div className="flex items-start gap-6 mb-8">
-                  <div className="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center flex-shrink-0 glow-primary">
+                  <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 shadow-md">
                     <integration.icon className="w-8 h-8 text-primary-foreground" />
                   </div>
                   <div>
@@ -141,7 +136,7 @@ const Integration = () => {
                   {/* Features */}
                   <div className="space-y-4">
                     {integration.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-4 glass-card p-4 rounded-xl">
+                      <div key={i} className="flex items-center gap-4 bg-card border border-border p-4 rounded-xl">
                         <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                           <feature.icon className="w-5 h-5 text-primary" />
                         </div>
@@ -151,7 +146,7 @@ const Integration = () => {
                   </div>
 
                   {/* Code Example or Link */}
-                  <div className="glass-card rounded-xl overflow-hidden">
+                  <div className="bg-card border border-border rounded-xl overflow-hidden">
                     {integration.codeExample ? (
                       <div className="p-6">
                         <div className="flex items-center gap-2 mb-4">
@@ -179,7 +174,7 @@ const Integration = () => {
         ))}
 
         {/* Compatible Platforms */}
-        <section className="py-20 bg-card/50">
+        <section className="py-20 bg-muted/50">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -188,7 +183,7 @@ const Integration = () => {
               className="text-center mb-12"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Compatible <span className="gradient-text">Platforms</span>
+                Compatible <span className="text-primary">Platforms</span>
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Frame Forge integrates with all major event and ticketing platforms.
@@ -204,7 +199,7 @@ const Integration = () => {
               {platforms.map((platform, index) => (
                 <div
                   key={index}
-                  className="px-6 py-3 glass-card rounded-full text-foreground"
+                  className="px-6 py-3 bg-card border border-border rounded-full text-foreground"
                 >
                   {platform}
                 </div>
@@ -215,7 +210,7 @@ const Integration = () => {
               <p className="text-muted-foreground mb-6">
                 Don't see your platform? We can build a custom integration for you.
               </p>
-              <Button asChild size="lg" className="gradient-bg hover:opacity-90">
+              <Button asChild size="lg">
                 <Link to="/contact">
                   Contact Us
                   <ArrowRight className="ml-2 w-5 h-5" />

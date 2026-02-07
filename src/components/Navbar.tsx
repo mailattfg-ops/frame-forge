@@ -19,16 +19,16 @@ export function Navbar() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 glass-card"
+      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border"
     >
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-xl">F</span>
             </div>
-            <span className="text-xl font-bold gradient-text">Frame Forge</span>
+            <span className="text-xl font-bold text-foreground">Frame Forge</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -46,7 +46,7 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
-            <Button asChild className="gradient-bg hover:opacity-90 transition-opacity">
+            <Button asChild>
               <Link to="/contact">Get Started</Link>
             </Button>
           </div>
@@ -81,7 +81,7 @@ export function Navbar() {
                     {link.name}
                   </Link>
                 ))}
-                <Button asChild className="gradient-bg hover:opacity-90 transition-opacity w-full mt-2">
+                <Button asChild className="w-full mt-2">
                   <Link to="/contact" onClick={() => setIsOpen(false)}>Get Started</Link>
                 </Button>
               </div>

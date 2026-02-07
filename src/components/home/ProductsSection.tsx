@@ -54,7 +54,7 @@ export function ProductsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Our <span className="gradient-text">Product Offerings</span>
+            Our <span className="text-primary">Product Offerings</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             A complete suite of AI-powered tools designed to elevate your event experience.
@@ -70,14 +70,11 @@ export function ProductsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative glass-card rounded-2xl p-8 hover:border-primary/50 transition-all duration-300"
+              className="group relative bg-card border border-border rounded-2xl p-8 hover:border-primary/50 hover:shadow-md transition-all duration-300"
             >
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
               <div className="relative z-10">
                 <div className="flex items-start gap-5 mb-6">
-                  <div className="w-14 h-14 rounded-xl gradient-bg flex items-center justify-center flex-shrink-0">
+                  <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
                     <product.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
                   <div>
