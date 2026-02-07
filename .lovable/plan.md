@@ -1,116 +1,134 @@
 
 
-# Remove Orange Color & Update Logo Display
+# Generate Unique AI Images for All Sections
 
 ## Overview
-Remove the orange accent color from the entire site and switch to a clean black/white monochrome theme. Also update the logo to display with black text on a white background (no dark container).
+Use Lovable AI's image generation capability (Nano banana model) to create 8 unique, relevant images for the website sections - 4 for "What Frame Forge Does" and 4 for "See What You Can Create" carousel.
 
 ---
 
-## Changes Summary
+## Images to Generate
 
-### 1. Update Color System
-**File**: `src/index.css`
+### "What Frame Forge Does" Section (4 images)
 
-Replace the orange primary color (`24 95% 53%`) with black/dark color:
+| Feature | Image Description |
+|---------|-------------------|
+| **AI Event Frames** | A professional photo frame mockup showing a person's headshot with elegant event branding, decorative borders, and event logo overlay - conference/corporate style |
+| **Smart Badges** | A digital badge design with a professional photo, name, title, QR code, and social sharing icons - modern and shareable design |
+| **AI Visuals** | Abstract AI-generated artistic graphics with vibrant colors, geometric patterns, and event-themed elements like confetti and lighting |
+| **Custom Design** | A collage showing various branded materials - banners, posters, social media templates - demonstrating full-service design capabilities |
 
-| Variable | Current (Orange) | New (Black) |
-|----------|-----------------|-------------|
-| `--primary` | `24 95% 53%` | `0 0% 10%` |
-| `--primary-foreground` | `0 0% 100%` | `0 0% 100%` (stays white) |
-| `--ring` | `24 95% 53%` | `0 0% 10%` |
-| `--sidebar-primary` | `24 95% 53%` | `0 0% 10%` |
-| `--sidebar-ring` | `24 95% 53%` | `0 0% 10%` |
+### "See What You Can Create" Carousel (4 images)
 
-This single change will automatically update all buttons, links, icons, badges, and accents across the entire site since they all use `bg-primary`, `text-primary`, etc.
-
-### 2. Update Dark Mode Colors
-Also update dark mode primary colors to maintain consistency:
-
-| Variable | Current | New |
-|----------|---------|-----|
-| `--primary` | `24 95% 53%` | `0 0% 98%` (white in dark mode) |
-| `--ring` | `24 95% 53%` | `0 0% 98%` |
-
-### 3. Update Navbar Logo
-**File**: `src/components/Navbar.tsx`
-
-Remove the dark background container around the logo:
-
-**Before:**
-```jsx
-<div className="h-10 px-3 rounded-lg bg-foreground flex items-center justify-center">
-  <img src={frameforgelogo} alt="Frameforge.one" className="h-5 w-auto" />
-</div>
-```
-
-**After:**
-```jsx
-<img src={frameforgelogo} alt="Frameforge.one" className="h-8 w-auto" />
-```
-
-The logo (currently white) needs to be updated to black. Since we already have the logo file, we'll apply a CSS filter to invert it to black, or the user can provide a black version of the logo.
-
-### 4. Update Footer Logo
-**File**: `src/components/Footer.tsx`
-
-Same change as Navbar - remove dark container and display logo directly:
-
-**Before:**
-```jsx
-<div className="h-10 px-3 rounded-lg bg-foreground flex items-center justify-center">
-  <img src={frameforgelogo} alt="Frameforge.one" className="h-5 w-auto" />
-</div>
-```
-
-**After:**
-```jsx
-<img src={frameforgelogo} alt="Frameforge.one" className="h-8 w-auto" />
-```
-
-Apply CSS filter `invert` to make the white logo appear black on the light background.
+| Frame Type | Image Description |
+|------------|-------------------|
+| **Conference Speaker Frame** | A speaker presentation frame with a professional headshot, speaker name, job title, company logo, and conference branding - stage-ready design |
+| **Summit Attendee Badge** | An elegant attendee badge with photo, name, and VIP/attendee status, featuring summit branding and networking QR code |
+| **Workshop Certificate** | A certificate-style frame showing workshop completion, with decorative borders, achievement badge, and organizer branding |
+| **Virtual Event Frame** | A digital frame optimized for video calls/streaming with webcam-friendly overlay, event hashtag, and online event branding |
 
 ---
+
+## Technical Implementation
+
+### 1. Create Image Generation Edge Function
+**New File**: `supabase/functions/generate-image/index.ts`
+
+Edge function that calls Lovable AI Gateway with the Nano banana model to generate images:
+- Accepts prompt and returns base64 image
+- Uses `google/gemini-2.5-flash-image` model
+- Handles errors gracefully
+
+### 2. Create Image Generator Admin Component
+**New File**: `src/components/admin/ImageGenerator.tsx`
+
+A temporary admin component to:
+- Generate all 8 images with predefined prompts
+- Display generated images for review
+- Provide download functionality to save as assets
+
+### 3. Create Admin Page
+**New File**: `src/pages/AdminImages.tsx`
+
+Hidden admin page at `/admin/images` to:
+- Trigger image generation
+- Preview all generated images
+- Download them for saving as project assets
+
+### 4. Update Router
+**File**: `src/App.tsx`
+
+Add route for the admin image generator page.
+
+### 5. Save Generated Images as Assets
+After generation, save the images to:
+- `src/assets/feature-ai-frames.jpg`
+- `src/assets/feature-smart-badges.jpg`
+- `src/assets/feature-ai-visuals.jpg`
+- `src/assets/feature-custom-design.jpg`
+- `src/assets/showcase-speaker-frame.jpg`
+- `src/assets/showcase-attendee-badge.jpg`
+- `src/assets/showcase-workshop-certificate.jpg`
+- `src/assets/showcase-virtual-event.jpg`
+
+### 6. Update Components to Use New Images
+**Files**: 
+- `src/components/home/FeaturesSection.tsx`
+- `src/components/home/FrameShowcaseSection.tsx`
+
+Import and use the new unique images for each section.
+
+---
+
+## Files to Create
+
+| File | Purpose |
+|------|---------|
+| `supabase/functions/generate-image/index.ts` | Edge function for AI image generation |
+| `src/components/admin/ImageGenerator.tsx` | Image generation UI component |
+| `src/pages/AdminImages.tsx` | Admin page to generate/preview images |
 
 ## Files to Modify
 
 | File | Change |
 |------|--------|
-| `src/index.css` | Change primary color from orange to black |
-| `src/components/Navbar.tsx` | Remove container, add invert filter to logo |
-| `src/components/Footer.tsx` | Remove container, add invert filter to logo |
+| `src/App.tsx` | Add admin route |
+| `supabase/config.toml` | Add function configuration |
+| `src/components/home/FeaturesSection.tsx` | Use unique images |
+| `src/components/home/FrameShowcaseSection.tsx` | Use unique images |
 
 ---
 
-## Visual Impact
+## Image Generation Prompts
 
-### Before
-- Orange accent color throughout (buttons, highlights, icons, badges)
-- Logo in dark container
+### Feature Section Prompts
 
-### After
-- Clean black/white monochrome theme
-- All accents are now black
-- Logo displays directly with black text on white/light background
-- Professional, minimal aesthetic
+1. **AI Event Frames**: "A professional event photo frame mockup, showing a business person's professional headshot photo inside an elegant decorative frame with corporate event branding, gold and black color scheme, conference logo overlay, modern minimalist design, high quality marketing material"
+
+2. **Smart Badges**: "A modern digital event badge design mockup, featuring a professional photo, person's name and title, QR code, social media sharing icons, sleek black and white design with accent colors, shareable social media format, professional networking badge"
+
+3. **AI Visuals**: "Abstract AI-generated artistic event graphics, vibrant gradient colors, geometric patterns, celebration elements like confetti and stage lighting, futuristic tech conference aesthetic, creative marketing visual design"
+
+4. **Custom Design**: "A collage of branded event marketing materials including banners, posters, social media templates, and promotional graphics, cohesive brand identity design, professional marketing suite, multiple design elements arranged aesthetically"
+
+### Showcase Carousel Prompts
+
+1. **Conference Speaker Frame**: "A conference speaker presentation frame, professional headshot with name title and company, stage-ready speaker card design, keynote speaker badge with microphone icon, corporate event branding, premium design"
+
+2. **Summit Attendee Badge**: "An elegant summit attendee badge, VIP event pass design with professional photo, participant name and role, networking QR code, premium gold accents on black background, exclusive event branding"
+
+3. **Workshop Certificate**: "A workshop completion certificate frame design, achievement badge with decorative borders, certification seal, workshop title and organizer branding, accomplishment recognition design, elegant certificate style"
+
+4. **Virtual Event Frame**: "A digital frame overlay for video calls and live streaming, webcam-friendly design with event branding, hashtag display, online event frame for virtual conferences, modern streaming overlay design"
 
 ---
 
-## Technical Approach
+## Workflow
 
-### CSS Filter for Logo
-Since the current logo (`frameforge-logo.png`) is white text, we can use CSS `filter: invert(1)` to make it appear black without needing a new image file:
-
-```jsx
-<img 
-  src={frameforgelogo} 
-  alt="Frameforge.one" 
-  className="h-8 w-auto invert" 
-/>
-```
-
-This is a clean solution that:
-- Requires no new assets
-- Works immediately
-- Automatically adapts (can be toggled for dark mode if needed later)
+1. Create the edge function for image generation
+2. Create the admin UI to generate and preview images
+3. Generate all 8 images using the admin page
+4. Save the generated images as static assets
+5. Update both sections to use the unique images
+6. Optionally remove the admin page after images are saved
 
