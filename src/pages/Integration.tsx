@@ -19,7 +19,7 @@ const integrations = [
       { icon: Zap, text: "Rate limiting with generous quotas" },
     ],
     codeExample: `// Example: Generate a frame for an attendee
-const response = await fetch('https://api.frameforge.ai/v1/frames', {
+const response = await fetch('https://api.frameforge.one/v1/frames', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer YOUR_API_KEY',
@@ -43,7 +43,7 @@ const response = await fetch('https://api.frameforge.ai/v1/frames', {
       { icon: Shield, text: "Custom branded landing pages" },
       { icon: FileCode, text: "Built-in analytics dashboard" },
     ],
-    example: "https://frames.frameforge.ai/your-event-name",
+    example: "https://frames.frameforge.one/your-event-name",
   },
   {
     id: "embed",
@@ -56,13 +56,13 @@ const response = await fetch('https://api.frameforge.ai/v1/frames', {
       { icon: Shield, text: "CSS customization options" },
       { icon: Zap, text: "Lazy loading for performance" },
     ],
-    codeExample: `<!-- Add Frame Forge to your website -->
-<div id="frame-forge-widget"></div>
-<script src="https://cdn.frameforge.ai/widget.js"></script>
+    codeExample: `<!-- Add Frameforge.one to your website -->
+<div id="frameforge-widget"></div>
+<script src="https://cdn.frameforge.one/widget.js"></script>
 <script>
-  FrameForge.init({
+  Frameforge.init({
     eventId: 'your-event-id',
-    container: '#frame-forge-widget',
+    container: '#frameforge-widget',
     theme: 'dark'
   });
 </script>`,
