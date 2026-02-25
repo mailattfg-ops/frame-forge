@@ -8,6 +8,8 @@ import showcaseSpeakerFrame from "@/assets/showcase-speaker-frame.png";
 import showcaseAttendeeBadge from "@/assets/showcase-attendee-badge.png";
 import showcaseWorkshopCertificate from "@/assets/showcase-workshop-certificate.png";
 import showcaseVirtualEvent from "@/assets/showcase-virtual-event.png";
+import showcaseMockup from "@/assets/showcase-mockup.png";
+import showcaseJungle from "@/assets/showcase-jungle.png";
 
 const frames = [
   {
@@ -33,6 +35,18 @@ const frames = [
     image: showcaseVirtualEvent,
     title: "Virtual Event Frame",
     description: "Digital frame for online event engagement",
+  },
+  {
+    id: 5,
+    image: showcaseMockup,
+    title: "Instagram Story Mockup",
+    description: "Generate buzz with natural user-driven marketing",
+  },
+  {
+    id: 6,
+    image: showcaseJungle,
+    title: "AI Character Transform",
+    description: "Transform photos into cinematic character portraits",
   },
 ];
 
