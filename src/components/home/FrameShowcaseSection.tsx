@@ -10,6 +10,8 @@ import showcaseWorkshopCertificate from "@/assets/showcase-workshop-certificate.
 import showcaseVirtualEvent from "@/assets/showcase-virtual-event.png";
 import showcaseMockup from "@/assets/showcase-mockup.png";
 import showcaseJungle from "@/assets/showcase-jungle.png";
+import showcaseStoryFrame from "@/assets/showcase-story-frame.png";
+import showcaseEventPoster from "@/assets/showcase-event-poster.jpeg";
 
 const frames = [
   {
@@ -47,6 +49,18 @@ const frames = [
     image: showcaseJungle,
     title: "AI Character Transform",
     description: "Transform photos into cinematic character portraits",
+  },
+  {
+    id: 7,
+    image: showcaseStoryFrame,
+    title: "Social Media Story Frame",
+    description: "Instagram-ready story frame with event branding overlay",
+  },
+  {
+    id: 8,
+    image: showcaseEventPoster,
+    title: "AI Event Poster",
+    description: "Stylized AI artwork poster with event branding and details",
   },
 ];
 
