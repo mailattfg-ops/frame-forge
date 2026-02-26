@@ -6,8 +6,16 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import showcaseSpeakerFrame from "@/assets/showcase-speaker-frame.png";
 import showcaseAttendeeBadge from "@/assets/showcase-attendee-badge.png";
-import showcaseWorkshopCertificate from "@/assets/showcase-workshop-certificate.png";
-import showcaseVirtualEvent from "@/assets/showcase-virtual-event.png";
+import featureAiVisuals from "@/assets/feature-ai-visuals.jpeg";
+import frame1 from "@/assets/Frame 2087326588.png";
+import frame2 from "@/assets/Frame 2087326589.png";
+import frame3 from "@/assets/Frame 2087326590.png";
+import frame4 from "@/assets/Frame 2087326592.png";
+import frame5 from "@/assets/Frame 2087326593.png";
+import instagramStoryMockup from "@/assets/Instagram story mockup.png";
+import story1 from "@/assets/Story 1.png";
+import story2 from "@/assets/Story 2.png";
+import story3 from "@/assets/Story 3.png";
 
 const frames = [
   {
@@ -24,22 +32,70 @@ const frames = [
   },
   {
     id: 3,
-    image: showcaseWorkshopCertificate,
-    title: "Workshop Certificate",
-    description: "Achievement frame for workshop completions",
+    image: featureAiVisuals,
+    title: "AI Visual Showcase",
+    description: "Stunning AI-generated visuals for your events",
   },
   {
     id: 4,
-    image: showcaseVirtualEvent,
-    title: "Virtual Event Frame",
-    description: "Digital frame for online event engagement",
+    image: frame1,
+    title: "Modern Event Frame",
+    description: "Sleek and professional design for any occasion",
+  },
+  {
+    id: 5,
+    image: frame2,
+    title: "Creative Summit Frame",
+    description: "Bold colors and unique layout for creative summits",
+  },
+  {
+    id: 6,
+    image: frame3,
+    title: "Tech Conference Frame",
+    description: "High-tech aesthetic for technology-focused events",
+  },
+  {
+    id: 7,
+    image: frame4,
+    title: "Gala Dinner Frame",
+    description: "Sophisticated and elegant frame for formal gatherings",
+  },
+  {
+    id: 8,
+    image: frame5,
+    title: "Startup Pitch Frame",
+    description: "Dynamic and energetic design for startup events",
+  },
+  {
+    id: 9,
+    image: instagramStoryMockup,
+    title: "Instagram Story Frame",
+    description: "Optimized frame for social media engagement",
+  },
+  {
+    id: 10,
+    image: story1,
+    title: "Personal Branding Story",
+    description: "Highlight your personal brand on social media",
+  },
+  {
+    id: 11,
+    image: story2,
+    title: "Event Highlight Story",
+    description: "Share the best moments of your event",
+  },
+  {
+    id: 12,
+    image: story3,
+    title: "Speaker Spotlight Story",
+    description: "Introduce your speakers to your audience",
   },
 ];
 
 export function FrameShowcaseSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center" },
-    [Autoplay({ delay: 4000, stopOnInteraction: true })]
+    { loop: true, align: "center", skipSnaps: false },
+    [Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
 

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Frame, BadgeCheck, Wand2, Palette } from "lucide-react";
 import featureAiFrames from "@/assets/feature-ai-frames.png";
 import featureSmartBadges from "@/assets/feature-smart-badges.png";
-import featureAiVisuals from "@/assets/feature-ai-visuals.png";
+import featureAiVisuals from "@/assets/feature-ai-visuals.jpeg";
 import featureCustomDesign from "@/assets/feature-custom-design.png";
 
 const features = [

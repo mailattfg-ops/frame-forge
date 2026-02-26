@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
-import frameforgelogo from "@/assets/frameforge-logo.png";
+import frameforgelogo from "@/assets/Frame 1171275423.png";
 
 const footerLinks = {
   product: [
@@ -29,7 +29,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-3">
-              <img src={frameforgelogo} alt="Frameforge.one" className="h-5 w-auto invert" />
+              <img src={frameforgelogo} alt="Frame Forge" className="h-10 w-auto invert" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Transform your events with AI-powered visual engagement. Custom frames, smart badges, and stunning visuals.
@@ -84,7 +84,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-muted-foreground text-sm">
                 <MapPin size={16} className="text-primary mt-0.5" />
-                <span>San Francisco, CA</span>
+                <span>Malappuram , Kerala</span>
               </li>
             </ul>
 

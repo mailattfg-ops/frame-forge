@@ -29,9 +29,9 @@ export function CTASection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 text-lg px-8 py-6">
+            <Button asChild size="lg" className="bg-primary-foreground text-black hover:bg-primary-foreground/90 text-lg px-8 py-6">
               <Link to="/contact">
-                Get Started Free
+                Get Started
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
