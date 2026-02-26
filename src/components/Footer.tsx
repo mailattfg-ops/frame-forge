@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
 import frameforgelogo from "@/assets/Frame 1171275423.png";
 
 const WhatsAppIcon = ({ size = 18 }: { size?: number }) => (
@@ -27,8 +27,7 @@ const footerLinks = {
   ],
   social: [
     { name: "WhatsApp", href: "https://wa.me/919745004161", icon: WhatsAppIcon },
-    { name: "LinkedIn", href: "#", icon: Linkedin },
-    { name: "Twitter", href: "#", icon: Twitter },
+    { name: "Facebook", href: "#", icon: Facebook },
     { name: "Instagram", href: "#", icon: Instagram },
   ],
 };
