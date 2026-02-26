@@ -103,7 +103,7 @@ const Services = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Our <span className="text-secondary">Services</span>
+                Our <span className="text-primary">Services</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 A complete suite of AI-powered tools and creative services designed to 
@@ -131,11 +131,11 @@ const Services = () => {
               >
                 {/* Content */}
                 <div className="flex-1">
-                  <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mb-6 shadow-md">
-                    <service.icon className="w-8 h-8 text-secondary-foreground" />
+                  <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mb-6 shadow-md">
+                    <service.icon className="w-8 h-8 text-primary-foreground" />
                   </div>
                   <h2 className="text-3xl md:text-4xl font-bold mb-2">{service.title}</h2>
-                  <p className="text-lg text-secondary mb-4">{service.subtitle}</p>
+                  <p className="text-lg text-primary mb-4">{service.subtitle}</p>
                   <p className="text-muted-foreground text-lg leading-relaxed mb-8">
                     {service.description}
                   </p>
@@ -144,15 +144,15 @@ const Services = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                     {service.benefits.map((benefit, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <div className="w-5 h-5 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-                          <Check className="w-3 h-3 text-secondary-foreground" />
+                        <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3 h-3 text-primary-foreground" />
                         </div>
                         <span className="text-foreground">{benefit}</span>
                       </div>
                     ))}
                   </div>
 
-                  <Button asChild className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                  <Button asChild>
                     <Link to="/contact">
                       Get Started
                       <ArrowRight className="ml-2 w-4 h-4" />
@@ -168,7 +168,7 @@ const Services = () => {
                       {service.useCases.map((useCase, i) => (
                         <span
                           key={i}
-                          className="px-4 py-2 rounded-full bg-secondary/10 text-secondary"
+                          className="px-4 py-2 rounded-full bg-primary/10 text-primary"
                         >
                           {useCase}
                         </span>

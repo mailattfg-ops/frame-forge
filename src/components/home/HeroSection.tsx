@@ -16,9 +16,9 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
             >
-              <Sparkles className="w-4 h-4 text-secondary" />
+              <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm text-foreground">AI-Powered Event Engagement</span>
             </motion.div>
 
@@ -30,7 +30,7 @@ export function HeroSection() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance text-foreground"
             >
               Transform Events with{" "}
-              <span className="text-secondary">AI-Powered</span>{" "}
+              <span className="text-primary">AI-Powered</span>{" "}
               Visual Engagement
             </motion.h1>
 
@@ -52,7 +52,7 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button asChild size="lg" className="text-lg px-8 py-6 bg-secondary text-secondary-foreground hover:bg-secondary/90">
+              <Button asChild size="lg" className="text-lg px-8 py-6">
                 <Link to="/contact">
                   Get Started
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -78,7 +78,7 @@ export function HeroSection() {
                 { value: "98%", label: "Client Satisfaction" },
               ].map((stat, index) => (
                 <div key={index} className="text-center lg:text-left">
-                  <div className="text-2xl md:text-3xl font-bold text-secondary">{stat.value}</div>
+                  <div className="text-2xl md:text-3xl font-bold text-primary">{stat.value}</div>
                   <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
                 </div>
               ))}

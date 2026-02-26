@@ -44,7 +44,7 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
-            <Button asChild className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+            <Button asChild>
               <Link to="/contact">Get Started</Link>
             </Button>
           </div>
@@ -79,7 +79,7 @@ export function Navbar() {
                     {link.name}
                   </Link>
                 ))}
-                <Button asChild className="w-full mt-2 bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                <Button asChild className="w-full mt-2">
                   <Link to="/contact" onClick={() => setIsOpen(false)}>Get Started</Link>
                 </Button>
               </div>

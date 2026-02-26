@@ -64,7 +64,7 @@ export function FeaturesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            What <span className="text-secondary">Frame Forge</span> Does
+            What <span className="text-primary">Frame Forge</span> Does
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Everything you need to create memorable, shareable event experiences that drive engagement.
@@ -96,8 +96,8 @@ export function FeaturesSection() {
               
               {/* Content */}
               <div className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-secondary-foreground" />
+                <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center mb-4">
+                  <feature.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-foreground">{feature.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>

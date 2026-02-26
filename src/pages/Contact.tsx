@@ -121,7 +121,7 @@ const Contact = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Let's <span className="text-secondary">Connect</span>
+                Let's <span className="text-primary">Connect</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Ready to transform your event? Fill out the form below and our team 
