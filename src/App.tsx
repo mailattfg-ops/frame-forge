@@ -10,6 +10,7 @@ import Integration from "./pages/Integration";
 import Contact from "./pages/Contact";
 import AdminImages from "./pages/AdminImages";
 import NotFound from "./pages/NotFound";
+import { WhatsAppButton } from "./components/WhatsAppButton";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <WhatsAppButton />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

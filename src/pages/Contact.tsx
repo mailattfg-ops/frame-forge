@@ -67,13 +67,41 @@ const Contact = () => {
   });
 
   const onSubmit = async (data: FormValues) => {
-    // For now, just show success. Backend integration will be added later.
-    console.log("Form submitted:", data);
-    setIsSubmitted(true);
+    // Format the message for WhatsApp
+    const selectedServices = Object.entries(data.services)
+      .filter(([_, selected]) => selected)
+      .map(([name, _]) => services.find(s => s.id === name)?.label || name)
+      .join(", ");
+
+    const messageText = `*New Inquiry from Frame Forge Website*
+    
+*Name:* ${data.name}
+*Organization:* ${data.organization}
+*Event Name:* ${data.eventName}
+*Event Date:* ${data.eventDate}
+*Expected Attendees:* ${data.expectedAttendees}
+*Email:* ${data.email}
+*Phone:* ${data.phone}
+*Services:* ${selectedServices || "None selected"}
+*Details:* ${data.message || "No additional details"}
+    `.trim();
+
+    const encodedMessage = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/919745004161?text=${encodedMessage}`;
+
+    // Show success message and redirect
+    console.log("Form submitted, redirecting to WhatsApp:", data);
+    
     toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
+      title: "Redirecting to WhatsApp...",
+      description: "We're opening WhatsApp so you can send your request directly to us.",
     });
+
+    // Delay slightly to allow toast to be seen
+    setTimeout(() => {
+      window.open(whatsappUrl, "_blank");
+      setIsSubmitted(true);
+    }, 1500);
   };
 
   if (isSubmitted) {
