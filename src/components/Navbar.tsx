@@ -35,7 +35,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 {link.name}
               </Link>
@@ -73,7 +73,7 @@ export function Navbar() {
                   <Link
                     key={link.name}
                     to={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors duration-200 py-2"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 py-2"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
