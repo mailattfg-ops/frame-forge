@@ -41,7 +41,7 @@ export function BenefitsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Maximize Your <span className="text-primary">Event Visibility</span>
+            Maximize Your <span className="text-secondary">Event Visibility</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Real results from real events. See how Frame Forge transforms engagement metrics.
@@ -59,10 +59,10 @@ export function BenefitsSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mx-auto mb-6 shadow-md">
-                <benefit.icon className="w-8 h-8 text-primary-foreground" />
+              <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mx-auto mb-6 shadow-md">
+                <benefit.icon className="w-8 h-8 text-secondary-foreground" />
               </div>
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-secondary mb-2">
                 {benefit.value}
               </div>
               <div className="text-lg font-semibold text-foreground mb-2">

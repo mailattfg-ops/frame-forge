@@ -74,7 +74,7 @@ const HowItWorks = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                How It <span className="text-primary">Works</span>
+                How It <span className="text-secondary">Works</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 From event setup to viral sharing, see how Frame Forge transforms 
@@ -105,8 +105,8 @@ const HowItWorks = () => {
                   {/* Step Number & Icon */}
                   <div className="flex-shrink-0">
                     <div className="relative">
-                      <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center shadow-md">
-                        <step.icon className="w-7 h-7 text-primary-foreground" />
+                      <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center shadow-md">
+                        <step.icon className="w-7 h-7 text-secondary-foreground" />
                       </div>
                       <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-secondary text-secondary-foreground text-sm font-bold flex items-center justify-center">
                         {step.number}
@@ -135,7 +135,7 @@ const HowItWorks = () => {
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Integration <span className="text-primary">Options</span>
+                Integration <span className="text-secondary">Options</span>
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Choose the integration method that best fits your event's needs and technical requirements.
@@ -152,15 +152,15 @@ const HowItWorks = () => {
                   transition={{ delay: index * 0.1 }}
                   className="bg-card border border-border rounded-2xl p-8 hover:border-primary/50 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center mb-6">
-                    <method.icon className="w-7 h-7 text-primary-foreground" />
+                   <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-6">
+                    <method.icon className="w-7 h-7 text-secondary-foreground" />
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-foreground">{method.title}</h3>
                   <p className="text-muted-foreground mb-6">{method.description}</p>
                   <ul className="space-y-2">
                     {method.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
                         {feature}
                       </li>
                     ))}
