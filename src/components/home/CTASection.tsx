@@ -35,7 +35,7 @@ export function CTASection() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-orange-400 bg-orange-500 text-primary-foreground hover:bg-orange-600 text-lg px-8 py-6 group shadow-lg shadow-orange-500/30">
+            <Button asChild variant="outline" size="lg" className="border-primary-foreground/30 bg-primary-foreground text-foreground hover:bg-primary-foreground/90 text-lg px-8 py-6 group">
               <Link to="/how-it-works">
                 Learn More
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
