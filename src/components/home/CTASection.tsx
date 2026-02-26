@@ -35,16 +35,9 @@ export function CTASection() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-primary-foreground/30 text-foreground bg-background hover:bg-muted text-lg px-8 py-6 group">
+            <Button asChild variant="outline" size="lg" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-lg px-8 py-6">
               <Link to="/how-it-works">
                 Learn More
-                <motion.span
-                  animate={{ x: [0, 6, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="ml-2 inline-flex"
-                >
-                  <ArrowRight className="w-5 h-5" />
-                </motion.span>
               </Link>
             </Button>
           </div>
