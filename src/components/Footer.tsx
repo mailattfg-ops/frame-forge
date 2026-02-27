@@ -27,8 +27,13 @@ const footerLinks = {
   ],
   social: [
     { name: "WhatsApp", href: "https://wa.me/919745004161", icon: WhatsAppIcon },
+<<<<<<< HEAD
+    { name: "Facebook", href: "#", icon: Facebook },
+    { name: "Instagram", href: "#", icon: Instagram },
+=======
     { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61587792958879", icon: Facebook },
     { name: "Instagram", href: " https://www.instagram.com/frameforgeone/", icon: Instagram },
+>>>>>>> upstream/main
   ],
 };
 
