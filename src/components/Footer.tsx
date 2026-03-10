@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
-import frameforgelogo from "@/assets/Frame 1171275423.png";
+import frameforgelogo from "@/assets/icon.svg";
 
 const WhatsAppIcon = ({ size = 18 }: { size?: number }) => (
   <svg

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import frameforgelogo from "@/assets/Frame 1171275423.png";
+import frameforgelogo from "@/assets/icon.svg";
 
 const navLinks = [
   { name: "Home", href: "/" },
