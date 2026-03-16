@@ -12,6 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
@@ -67,41 +68,42 @@ const Contact = () => {
   });
 
   const onSubmit = async (data: FormValues) => {
-    // Format the message for WhatsApp
     const selectedServices = Object.entries(data.services)
       .filter(([_, selected]) => selected)
       .map(([name, _]) => services.find(s => s.id === name)?.label || name)
-      .join(", ");
+      .filter(Boolean);
 
-    const messageText = `*New Inquiry from Frame Forge Website*
-    
-*Name:* ${data.name}
-*Organization:* ${data.organization}
-*Event Name:* ${data.eventName}
-*Event Date:* ${data.eventDate}
-*Expected Attendees:* ${data.expectedAttendees}
-*Email:* ${data.email}
-*Phone:* ${data.phone}
-*Services:* ${selectedServices || "None selected"}
-*Details:* ${data.message || "No additional details"}
-    `.trim();
+    try {
+      const { data: response, error } = await supabase.functions.invoke("send-contact-enquiry", {
+        body: {
+          ...data,
+          selectedServices,
+        },
+      });
 
-    const encodedMessage = encodeURIComponent(messageText);
-    const whatsappUrl = `https://wa.me/919745004161?text=${encodedMessage}`;
+      if (error) {
+        throw error;
+      }
 
-    // Show success message and redirect
-    console.log("Form submitted, redirecting to WhatsApp:", data);
-    
-    toast({
-      title: "Redirecting to WhatsApp...",
-      description: "We're opening WhatsApp so you can send your request directly to us.",
-    });
+      if (response?.error) {
+        throw new Error(response.error);
+      }
 
-    // Delay slightly to allow toast to be seen
-    setTimeout(() => {
-      window.open(whatsappUrl, "_blank");
+      toast({
+        title: "Thank you for enquiring",
+        description: "We will respond within 24 hrs. A WhatsApp confirmation has been sent.",
+      });
+
+      form.reset();
       setIsSubmitted(true);
-    }, 1500);
+    } catch (error) {
+      console.error("Failed to submit contact enquiry:", error);
+      toast({
+        title: "Could not send your enquiry",
+        description: error instanceof Error ? error.message : "Please try again in a moment.",
+        variant: "destructive",
+      });
+    }
   };
 
   if (isSubmitted) {
