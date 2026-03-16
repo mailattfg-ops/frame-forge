@@ -80,6 +80,14 @@ function buildAuthorizationHeader(token: string) {
   return /^Bearer\s+/i.test(trimmed) ? trimmed : `Bearer ${trimmed}`;
 }
 
+function buildTemplateSendUrl(endpointOrUrl: string) {
+  const trimmed = endpointOrUrl.trim().replace(/\/$/, "");
+  if (/\/api\/ext\/v3\/messageTemplates\/send$/i.test(trimmed)) {
+    return trimmed;
+  }
+  return `${trimmed}/api/ext/v3/messageTemplates/send`;
+}
+
 async function sendTemplateMessage(options: {
   endpoint: string;
   token: string;
@@ -89,7 +97,7 @@ async function sendTemplateMessage(options: {
   phoneNumber: string;
   parameters: TemplateParameter[];
 }) {
-  const response = await fetch(`${options.endpoint}/api/ext/v3/messageTemplates/send`, {
+  const response = await fetch(buildTemplateSendUrl(options.endpoint), {
     method: "POST",
     headers: {
       Authorization: buildAuthorizationHeader(options.token),
