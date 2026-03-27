@@ -61,13 +61,57 @@ function sanitizeText(value: string | undefined, fallback = "Not provided") {
 
 function normalizePhoneNumber(value: string) {
   const digitsOnly = value.replace(/\D/g, "");
-  const normalized = digitsOnly.startsWith("00") ? digitsOnly.slice(2) : digitsOnly;
+  const base = digitsOnly.startsWith("00") ? digitsOnly.slice(2) : digitsOnly;
+
+  let normalized = base;
+  if (!normalized.startsWith("91")) {
+    if (normalized.length === 10) {
+      normalized = `91${normalized}`;
+    } else if (normalized.length === 11 && normalized.startsWith("0")) {
+      normalized = `91${normalized.slice(1)}`;
+    }
+  }
 
   if (normalized.length < 8 || normalized.length > 15) {
     throw new Error("Phone number must include a valid country code.");
   }
 
   return normalized;
+}
+
+function extractWatiErrors(result: unknown): string[] {
+  if (!result || typeof result !== "object") return [];
+
+  const data = result as Record<string, unknown>;
+  const errors: string[] = [];
+
+  if (typeof data.error === "string" && data.error.trim()) {
+    errors.push(data.error.trim());
+  }
+
+  if (Array.isArray(data.errors)) {
+    for (const item of data.errors) {
+      if (typeof item === "string" && item.trim()) {
+        errors.push(item.trim());
+      } else if (item && typeof item === "object") {
+        const message = (item as Record<string, unknown>).message;
+        if (typeof message === "string" && message.trim()) {
+          errors.push(message.trim());
+        }
+      }
+    }
+  }
+
+  const failedRecipients = data.failed_recipients;
+  if (Array.isArray(failedRecipients) && failedRecipients.length > 0) {
+    errors.push(`failed_recipients: ${JSON.stringify(failedRecipients)}`);
+  }
+
+  if (data.success === false) {
+    errors.push("WATI success flag is false");
+  }
+
+  return errors;
 }
 
 function buildBroadcastName(prefix: string, name: string) {
@@ -88,6 +132,21 @@ function buildTemplateSendUrl(endpointOrUrl: string) {
   return `${trimmed}/api/ext/v3/messageTemplates/send`;
 }
 
+function hasInvalidReceiverError(errors: string[]) {
+  return errors.some((error) => /no valid receivers?/i.test(error));
+}
+
+function buildRecipientFormats(phoneNumber: string) {
+  const withPlus = `+${phoneNumber}`;
+  const local10 = phoneNumber.startsWith("91") && phoneNumber.length === 12 ? phoneNumber.slice(2) : phoneNumber;
+
+  return {
+    phoneNumber,
+    withPlus,
+    local10,
+  };
+}
+
 async function sendTemplateMessage(options: {
   endpoint: string;
   token: string;
@@ -97,32 +156,106 @@ async function sendTemplateMessage(options: {
   phoneNumber: string;
   parameters: TemplateParameter[];
 }) {
-  const response = await fetch(buildTemplateSendUrl(options.endpoint), {
-    method: "POST",
-    headers: {
-      Authorization: buildAuthorizationHeader(options.token),
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      channel: options.channel || null,
-      template_name: options.templateName,
-      broadcast_name: options.broadcastName,
-      recipients: [
-        {
-          whatsapp_number: options.phoneNumber,
-          parameters: options.parameters,
-        },
-      ],
-    }),
-  });
+  const endpointUrl = buildTemplateSendUrl(options.endpoint);
+  const recipient = buildRecipientFormats(options.phoneNumber);
+  const baseBody = {
+    channel: options.channel || null,
+    template_name: options.templateName,
+    broadcast_name: options.broadcastName,
+  };
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`WATI request failed (${response.status}): ${errorText}`);
+  const requestBodies = [
+    {
+      label: "recipients-phone_number-custom_params",
+      body: {
+        ...baseBody,
+        recipients: [
+          {
+            phone_number: recipient.phoneNumber,
+            custom_params: options.parameters,
+          },
+        ],
+      },
+    },
+    {
+      label: "recipients-phone_number-customParams",
+      body: {
+        ...baseBody,
+        recipients: [
+          {
+            phone_number: recipient.phoneNumber,
+            customParams: options.parameters,
+          },
+        ],
+      },
+    },
+    {
+      label: "recipients-phone_number-parameters",
+      body: {
+        ...baseBody,
+        recipients: [
+          {
+            phone_number: recipient.phoneNumber,
+            parameters: options.parameters,
+          },
+        ],
+      },
+    },
+    {
+      label: "recipients-local10-custom_params",
+      body: {
+        ...baseBody,
+        recipients: [
+          {
+            phone_number: recipient.local10,
+            custom_params: options.parameters,
+          },
+        ],
+      },
+    },
+  ];
+
+  const attemptErrors: string[] = [];
+
+  for (const requestBody of requestBodies) {
+    const response = await fetch(endpointUrl, {
+      method: "POST",
+      headers: {
+        Authorization: buildAuthorizationHeader(options.token),
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody.body),
+    });
+
+    const responseText = await response.text();
+    let parsed: unknown = null;
+    if (responseText) {
+      try {
+        parsed = JSON.parse(responseText);
+      } catch {
+        parsed = { raw: responseText };
+      }
+    }
+
+    if (!response.ok) {
+      attemptErrors.push(`${requestBody.label}: http_${response.status} ${responseText}`);
+      continue;
+    }
+
+    const logicalErrors = extractWatiErrors(parsed);
+    if (logicalErrors.length === 0) {
+      return parsed;
+    }
+
+    attemptErrors.push(`${requestBody.label}: ${logicalErrors.join(" | ")}`);
+
+    if (!hasInvalidReceiverError(logicalErrors)) {
+      break;
+    }
   }
 
-  return response.json().catch(() => null);
+  throw new Error(`WATI logical failure: ${attemptErrors.join(" || ")}`);
 }
 
 serve(async (req: Request) => {
@@ -186,6 +319,7 @@ serve(async (req: Request) => {
       phoneNumber: customerPhone,
       parameters: customerParameters,
     });
+    console.log("WATI customer send result:", JSON.stringify(customerResult));
 
     const adminResult = await sendTemplateMessage({
       endpoint: watiEndpoint,
@@ -196,6 +330,7 @@ serve(async (req: Request) => {
       phoneNumber: normalizedAdminNumber,
       parameters: adminParameters,
     });
+    console.log("WATI admin send result:", JSON.stringify(adminResult));
 
     return jsonResponse({
       ok: true,
