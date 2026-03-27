@@ -73,8 +73,8 @@ export function HeroSection() {
               className="grid grid-cols-3 gap-6 mt-12"
             >
               {[
-                { value: "500+", label: "Events Powered" },
-                { value: "1M+", label: "Photos Created" },
+                // { value: "+", label: "Events Powered" },
+                { value: "5K+", label: "Photos Created" },
                 { value: "98%", label: "Client Satisfaction" },
               ].map((stat, index) => (
                 <div key={index} className="text-center lg:text-left">
