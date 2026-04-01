@@ -94,7 +94,7 @@ const frames = [
 
 export function FrameShowcaseSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center", skipSnaps: false },
+    { loop: true, align: "center", skipSnaps: false, containScroll: "trimSnaps" },
     [Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -142,20 +142,20 @@ export function FrameShowcaseSection() {
 
         {/* Carousel */}
         <div className="relative max-w-5xl mx-auto">
-          <div className="overflow-hidden" ref={emblaRef}>
+          <div className="overflow-hidden px-2 md:px-4" ref={emblaRef}>
             <div className="flex">
               {frames.map((frame, index) => (
                 <motion.div
                   key={frame.id}
-                  className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_40%] px-4"
+                  className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-3"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="group relative">
+                  <div className="group relative z-0 hover:z-20">
                     {/* Frame Card */}
-                    <div className="relative bg-card border border-border rounded-2xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:border-primary/50">
+                    <div className="relative isolate bg-card border border-border rounded-2xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:border-primary/50">
                       {/* Image */}
                       <div className="aspect-[3/4] overflow-hidden">
                         <img
@@ -165,15 +165,15 @@ export function FrameShowcaseSection() {
                         />
                       </div>
 
-                      {/* Overlay on Hover */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      {/* Readability overlay */}
+                      <div className="absolute inset-0 z-10 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
 
                       {/* Frame Info */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                        <h3 className="text-primary-foreground font-semibold text-lg mb-1">
+                      <div className="absolute bottom-0 left-0 right-0 z-20 p-6 translate-y-0 transition-transform duration-300 group-hover:-translate-y-1">
+                        <h3 className="text-primary-foreground font-semibold text-lg mb-1 drop-shadow-md">
                           {frame.title}
                         </h3>
-                        <p className="text-primary-foreground/80 text-sm">
+                        <p className="text-primary-foreground/90 text-sm drop-shadow-sm">
                           {frame.description}
                         </p>
                       </div>
