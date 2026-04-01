@@ -94,8 +94,19 @@ const frames = [
 
 export function FrameShowcaseSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center", skipSnaps: false, containScroll: "trimSnaps" },
-    [Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })]
+    {
+      loop: true,
+      align: "center",
+      skipSnaps: false,
+      containScroll: "trimSnaps",
+    },
+    [
+      Autoplay({
+        delay: 3000,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+      }),
+    ],
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -136,7 +147,8 @@ export function FrameShowcaseSection() {
             See What You Can <span className="text-primary">Create</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Real examples of frames created by event organizers using Frameforge.one
+            Real examples of frames created by event organizers using
+            Frameforge.one
           </p>
         </motion.div>
 
@@ -209,7 +221,9 @@ export function FrameShowcaseSection() {
             <button
               key={index}
               className={`h-2 rounded-full transition-all duration-300 ${
-                index === selectedIndex ? "w-8 bg-primary" : "w-2 bg-muted-foreground/30"
+                index === selectedIndex
+                  ? "w-8 bg-primary"
+                  : "w-2 bg-muted-foreground/30"
               }`}
               onClick={() => emblaApi?.scrollTo(index)}
               aria-label={`Go to slide ${index + 1}`}
