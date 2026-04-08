@@ -8,21 +8,52 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
-  name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
-  organization: z.string().trim().min(2, "Organization must be at least 2 characters").max(100, "Organization must be less than 100 characters"),
-  eventName: z.string().trim().min(2, "Event name must be at least 2 characters").max(100, "Event name must be less than 100 characters"),
+  name: z
+    .string()
+    .trim()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be less than 100 characters"),
+  organization: z
+    .string()
+    .trim()
+    .min(2, "Organization must be at least 2 characters")
+    .max(100, "Organization must be less than 100 characters"),
+  eventName: z
+    .string()
+    .trim()
+    .min(2, "Event name must be at least 2 characters")
+    .max(100, "Event name must be less than 100 characters"),
   eventDate: z.string().min(1, "Event date is required"),
   expectedAttendees: z.string().min(1, "Expected attendees is required"),
-  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
-  phone: z.string().trim().min(10, "Phone number must be at least 10 digits").max(20, "Phone must be less than 20 characters"),
-  message: z.string().trim().max(1000, "Message must be less than 1000 characters").optional(),
+  email: z
+    .string()
+    .trim()
+    .email("Invalid email address")
+    .max(255, "Email must be less than 255 characters"),
+  phone: z
+    .string()
+    .trim()
+    .min(10, "Phone number must be at least 10 digits")
+    .max(20, "Phone must be less than 20 characters"),
+  message: z
+    .string()
+    .trim()
+    .max(1000, "Message must be less than 1000 characters")
+    .optional(),
   services: z.object({
     frames: z.boolean().default(false),
     badges: z.boolean().default(false),
@@ -70,16 +101,19 @@ const Contact = () => {
   const onSubmit = async (data: FormValues) => {
     const selectedServices = Object.entries(data.services)
       .filter(([_, selected]) => selected)
-      .map(([name, _]) => services.find(s => s.id === name)?.label || name)
+      .map(([name, _]) => services.find((s) => s.id === name)?.label || name)
       .filter(Boolean);
 
     try {
-      const { data: response, error } = await supabase.functions.invoke("send-contact-enquiry", {
-        body: {
-          ...data,
-          selectedServices,
+      const { data: response, error } = await supabase.functions.invoke(
+        "send-contact-enquiry",
+        {
+          body: {
+            ...data,
+            selectedServices,
+          },
         },
-      });
+      );
 
       if (error) {
         throw error;
@@ -91,7 +125,8 @@ const Contact = () => {
 
       toast({
         title: "Thank you for enquiring",
-        description: "We will respond within 24 hrs. A WhatsApp confirmation has been sent.",
+        description:
+          "We will respond within 24 hrs. A WhatsApp confirmation has been sent.",
       });
 
       form.reset();
@@ -100,7 +135,10 @@ const Contact = () => {
       console.error("Failed to submit contact enquiry:", error);
       toast({
         title: "Could not send your enquiry",
-        description: error instanceof Error ? error.message : "Please try again in a moment.",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Please try again in a moment.",
         variant: "destructive",
       });
     }
@@ -123,8 +161,8 @@ const Contact = () => {
                 </div>
                 <h1 className="text-3xl font-bold mb-4">Thank You!</h1>
                 <p className="text-muted-foreground text-lg mb-8">
-                  We've received your message and will get back to you within 24 hours.
-                  Our team is excited to help you transform your event!
+                  We've received your message and will get back to you within 24
+                  hours. Our team is excited to help you transform your event!
                 </p>
                 <Button onClick={() => setIsSubmitted(false)} variant="outline">
                   Submit Another Request
@@ -154,8 +192,8 @@ const Contact = () => {
                 Let's <span className="text-primary">Connect</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Ready to transform your event? Fill out the form below and our team 
-                will reach out within 24 hours to discuss your needs.
+                Ready to transform your event? Fill out the form below and our
+                team will reach out within 24 hours to discuss your needs.
               </p>
             </motion.div>
           </div>
@@ -171,7 +209,10 @@ const Contact = () => {
             >
               <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm">
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-6"
+                  >
                     {/* Name & Organization */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <FormField
@@ -181,7 +222,11 @@ const Contact = () => {
                           <FormItem>
                             <FormLabel>Name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="John Smith" {...field} className="bg-muted/50" />
+                              <Input
+                                placeholder="John Smith"
+                                {...field}
+                                className="bg-muted/50"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -194,7 +239,11 @@ const Contact = () => {
                           <FormItem>
                             <FormLabel>Organization *</FormLabel>
                             <FormControl>
-                              <Input placeholder="Acme Inc." {...field} className="bg-muted/50" />
+                              <Input
+                                placeholder="Acme Inc."
+                                {...field}
+                                className="bg-muted/50"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -211,7 +260,11 @@ const Contact = () => {
                           <FormItem>
                             <FormLabel>Event Name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="Annual Tech Summit 2025" {...field} className="bg-muted/50" />
+                              <Input
+                                placeholder="Annual Tech Summit 2025"
+                                {...field}
+                                className="bg-muted/50"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -224,7 +277,11 @@ const Contact = () => {
                           <FormItem>
                             <FormLabel>Event Date *</FormLabel>
                             <FormControl>
-                              <Input type="date" {...field} className="bg-muted/50" />
+                              <Input
+                                type="date"
+                                {...field}
+                                className="bg-muted/50"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -240,7 +297,11 @@ const Contact = () => {
                         <FormItem>
                           <FormLabel>Expected Attendees *</FormLabel>
                           <FormControl>
-                            <Input placeholder="500" {...field} className="bg-muted/50" />
+                            <Input
+                              placeholder="500"
+                              {...field}
+                              className="bg-muted/50"
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -249,7 +310,9 @@ const Contact = () => {
 
                     {/* Services */}
                     <div>
-                      <FormLabel className="mb-4 block">Services Interested In</FormLabel>
+                      <FormLabel className="mb-4 block">
+                        Services Interested In
+                      </FormLabel>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {services.map((service) => (
                           <FormField
@@ -283,7 +346,12 @@ const Contact = () => {
                           <FormItem>
                             <FormLabel>Email *</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="john@acme.com" {...field} className="bg-muted/50" />
+                              <Input
+                                type="email"
+                                placeholder="john@acme.com"
+                                {...field}
+                                className="bg-muted/50"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -296,7 +364,11 @@ const Contact = () => {
                           <FormItem>
                             <FormLabel>Phone *</FormLabel>
                             <FormControl>
-                              <Input placeholder="+1 (555) 123-4567" {...field} className="bg-muted/50" />
+                              <Input
+                                placeholder="+1 (555) 123-4567"
+                                {...field}
+                                className="bg-muted/50"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
