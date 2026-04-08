@@ -13,7 +13,7 @@ serve(async (req) => {
 
   try {
     const { prompt } = await req.json();
-    
+
     if (!prompt) {
       return new Response(
         JSON.stringify({ error: 'Prompt is required' }),
@@ -49,21 +49,21 @@ serve(async (req) => {
     if (!response.ok) {
       const errorText = await response.text();
       console.error('AI Gateway error:', response.status, errorText);
-      
+
       if (response.status === 429) {
         return new Response(
           JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
           { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
-      
+
       if (response.status === 402) {
         return new Response(
           JSON.stringify({ error: 'Payment required. Please add credits to your workspace.' }),
           { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
-      
+
       throw new Error(`AI Gateway error: ${response.status}`);
     }
 
@@ -80,9 +80,9 @@ serve(async (req) => {
     }
 
     return new Response(
-      JSON.stringify({ 
+      JSON.stringify({
         imageUrl,
-        text: textContent 
+        text: textContent
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
